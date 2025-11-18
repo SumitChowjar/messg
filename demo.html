@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Messg Package Test</title>
+  <link rel="stylesheet" href="index.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    .test-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 30px;
+    }
+    .test-section {
+      margin-bottom: 20px;
+      padding: 15px;
+      background: #f9f9f9;
+      border-left: 4px solid #007bff;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      margin: 5px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="test-container">
+    <h1>🧪 Messg Package Test Suite</h1>
+
+    <!-- Test 1: Message Types -->
+    <div class="test-section">
+      <h2>Test 1: Message Types</h2>
+      <button onclick="testDefault()">Default Message</button>
+      <button onclick="testSuccess()">Success Message</button>
+      <button onclick="testInfo()">Info Message</button>
+      <button onclick="testWarning()">Warning Message</button>
+      <button onclick="testError()">Error Message</button>
+    </div>
+
+    <!-- Test 2: Message with Delay -->
+    <div class="test-section">
+      <h2>Test 2: Auto-hide with Delay</h2>
+      <button onclick="testDelay()">Message (Auto-hide in 2s)</button>
+    </div>
+
+    <!-- Test 3: Buttons -->
+    <div class="test-section">
+      <h2>Test 3: Message with Buttons</h2>
+      <button onclick="testWithButtons()">Message with Buttons</button>
+      <button onclick="testConfirm()">Confirm Dialog</button>
+    </div>
+
+    <!-- Test 4: Hide Handler -->
+    <div class="test-section">
+      <h2>Test 4: Hide Handler</h2>
+      <button onclick="testHideHandler()">Message with Hide Handler</button>
+    </div>
+
+    <!-- Test 5: Positions -->
+    <div class="test-section">
+      <h2>Test 5: Different Positions</h2>
+      <button onclick="testPositionTop()">Top</button>
+      <button onclick="testPositionTopLeft()">Top-Left</button>
+      <button onclick="testPositionTopRight()">Top-Right</button>
+      <button onclick="testPositionBottom()">Bottom</button>
+      <button onclick="testPositionBottomLeft()">Bottom-Left</button>
+      <button onclick="testPositionBottomRight()">Bottom-Right</button>
+    </div>
+
+    <!-- Test 6: Multiple Messages -->
+    <div class="test-section">
+      <h2>Test 6: Multiple Messages (Flow)</h2>
+      <button onclick="testMultiple()">Show 3 Messages</button>
+      <button onclick="testClean()">Clear All Messages</button>
+    </div>
+
+    <!-- Test 7: Options -->
+    <div class="test-section">
+      <h2>Test 7: Global Options</h2>
+      <button onclick="testSpeed()">Slow Animation (1000ms)</button>
+      <button onclick="testMaxMessages()">Max 2 Messages</button>
+      <button onclick="testDisableFlow()">Disable Flow</button>
+      <button onclick="resetOptions()">Reset Options</button>
+    </div>
+  </div>
+
+  <script type="module">
+    import Message, { success, info, warning, error } from './index.js';
+
+    // Expose Message and helper functions to global scope for onclick handlers
+    window.Message = Message;
+    window.messg = Message;
+    window.messg.Message = Message;
+    window.messg.success = success;
+    window.messg.info = info;
+    window.messg.warning = warning;
+    window.messg.error = error;
+
+    // Test 1: Message Types
+    function testDefault() {
+      messg('This is a default message');
+    }
+
+    function testSuccess() {
+      messg.success('Success! Operation completed.');
+    }
+
+    function testInfo() {
+      messg.info('Info: This is an informational message.');
+    }
+
+    function testWarning() {
+      messg.warning('Warning: Please check this.');
+    }
+
+    function testError() {
+      messg.error('Error: Something went wrong!');
+    }
+
+    // Test 2: Auto-hide with Delay
+    function testDelay() {
+      messg.success('This message will auto-hide in 2 seconds', 2000);
+    }
+
+    // Test 3: Buttons
+    function testWithButtons() {
+      messg.info('Message with buttons')
+        .button('Action 1', function() {
+          console.log('Action 1 clicked');
+        })
+        .button('Action 2', function() {
+          console.log('Action 2 clicked');
+        });
+    }
+
+    function testConfirm() {
+      messg.warning('Are you sure?')
+        .button('Yes', function() {
+          messg.success('You clicked Yes!');
+        })
+        .button('No', function() {
+          messg.info('You clicked No!');
+        });
+    }
+
+    // Test 4: Hide Handler
+    function testHideHandler() {
+      messg.info('Message with hide handler')
+        .hide(function() {
+          console.log('Message was hidden');
+        });
+    }
+
+    // Test 5: Positions
+    function testPositionTop() {
+      messg.Message.position = 'top';
+      messg('Message at top');
+    }
+
+    function testPositionTopLeft() {
+      messg.Message.position = 'top-left';
+      messg('Message at top-left');
+    }
+
+    function testPositionTopRight() {
+      messg.Message.position = 'top-right';
+      messg('Message at top-right');
+    }
+
+    function testPositionBottom() {
+      messg.Message.position = 'bottom';
+      messg('Message at bottom');
+    }
+
+    function testPositionBottomLeft() {
+      messg.Message.position = 'bottom-left';
+      messg('Message at bottom-left');
+    }
+
+    function testPositionBottomRight() {
+      messg.Message.position = 'bottom-right';
+      messg('Message at bottom-right');
+    }
+
+    // Test 6: Multiple Messages
+    function testMultiple() {
+      messg.success('Message 1');
+      setTimeout(() => messg.info('Message 2'), 300);
+      setTimeout(() => messg.warning('Message 3'), 600);
+    }
+
+    function testClean() {
+      messg.Message.clean();
+    }
+
+    // Test 7: Options
+    function testSpeed() {
+      messg.Message.speed = 1000;
+      messg('Slow animation (1000ms)');
+    }
+
+    function testMaxMessages() {
+      messg.Message.max = 2;
+      messg('Message 1');
+      setTimeout(() => messg('Message 2'), 200);
+      setTimeout(() => messg('Message 3 - will remove Message 1'), 400);
+    }
+
+    function testDisableFlow() {
+      messg.Message.flow = false;
+      messg('Flow disabled - messages will stack');
+      setTimeout(() => messg('Message 2'), 200);
+    }
+
+    function resetOptions() {
+      messg.Message.speed = 250;
+      messg.Message.position = 'top';
+      messg.Message.flow = true;
+      messg.Message.max = null;
+      messg.Message.delay = null;
+      messg.success('Options reset to defaults');
+    }
+
+    // Expose test functions to global scope for onclick handlers
+    window.testDefault = testDefault;
+    window.testSuccess = testSuccess;
+    window.testInfo = testInfo;
+    window.testWarning = testWarning;
+    window.testError = testError;
+    window.testDelay = testDelay;
+    window.testWithButtons = testWithButtons;
+    window.testConfirm = testConfirm;
+    window.testHideHandler = testHideHandler;
+    window.testPositionTop = testPositionTop;
+    window.testPositionTopLeft = testPositionTopLeft;
+    window.testPositionTopRight = testPositionTopRight;
+    window.testPositionBottom = testPositionBottom;
+    window.testPositionBottomLeft = testPositionBottomLeft;
+    window.testPositionBottomRight = testPositionBottomRight;
+    window.testMultiple = testMultiple;
+    window.testClean = testClean;
+    window.testSpeed = testSpeed;
+    window.testMaxMessages = testMaxMessages;
+    window.testDisableFlow = testDisableFlow;
+    window.resetOptions = resetOptions;
+  </script>
+</body>
+</html>
+
