@@ -1,9 +1,9 @@
 'use strict'
-var flow = []
-var margin = 10
-var prefix = 'messg'
+const flow = []
+const margin = 10
+const prefix = 'messg'
 
-var template = '<div class="' + prefix + '">' +
+const template = '<div class="' + prefix + '">' +
     '<div class="' + prefix + '__buttons"></div>' +
     '<div class="' + prefix + '__text"></div>' +
   '</div>'
@@ -84,7 +84,7 @@ Message.prototype.hide = function (fn) {
 }
 
 Message.prototype.button = function (name, fn) {
-  var button = document.createElement('button')
+  const button = document.createElement('button')
   button.innerHTML = name
   button.className = prefix + '__button'
   this.element.children[0].appendChild(button)
@@ -104,8 +104,8 @@ Message.prototype.isHidden = function () {
 }
 
 Message.reposition = function () {
-  var top = margin
-  var verticalPosition = Message.position.split(/-/)[0]
+  let top = margin
+  const verticalPosition = Message.position.split(/-/)[0]
 
   flow.forEach(function (message) {
     message.element.style[verticalPosition] = top + 'px'
