@@ -8,12 +8,11 @@ const template = '<div class="' + prefix + '">' +
     '<div class="' + prefix + '__text"></div>' +
   '</div>'
 
-module.exports = Message
-module.exports.default = getMessageByType('default')
-module.exports.success = getMessageByType('success')
-module.exports.info = getMessageByType('info')
-module.exports.warning = getMessageByType('warning')
-module.exports.error = getMessageByType('error')
+export default Message
+export const success = getMessageByType('success')
+export const info = getMessageByType('info')
+export const warning = getMessageByType('warning')
+export const error = getMessageByType('error')
 
 Message.speed = 250
 Message.position = 'top'
