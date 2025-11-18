@@ -1,0 +1,37 @@
+{
+  "name": "messg",
+  "version": "2.2.1",
+  "description": "Messages via CSS3 animations",
+  "main": "index.js",
+  "style": "index.css",
+  "files": [
+    "index.js",
+    "index.css"
+  ],
+  "scripts": {
+    "test": "standard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SumitChowjar/messg.git"
+  },
+  "keywords": [
+    "message",
+    "alert",
+    "confirm",
+    "notification",
+    "toast"
+  ],
+  "author": "Sumit Chowjar <promatics.sumit17@gmail.com> (https://github.com/SumitChowjar)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SumitChowjar/messg/issues"
+  },
+  "homepage": "https://github.com/SumitChowjar/messg",
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "devDependencies": {
+    "standard": "^17.0.0"
+  }
+}
