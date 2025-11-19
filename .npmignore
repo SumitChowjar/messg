@@ -1,0 +1,35 @@
+# Development files
+demo.html
+.idea/
+.git/
+.gitignore
+.npmignore
+
+# Dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+pnpm-debug.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+*.swp
+*.swo
+*~
+*.sublime-workspace
+
+# Package archives
+*.tgz
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
+
+# Documentation
+CHANGELOG.md
+

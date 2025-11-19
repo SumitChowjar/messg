@@ -4,12 +4,15 @@
   "description": "Messages via CSS3 animations",
   "main": "index.js",
   "style": "index.css",
+  "types": "index.d.ts",
   "files": [
     "index.js",
-    "index.css"
+    "index.css",
+    "index.d.ts"
   ],
   "scripts": {
-    "test": "standard"
+    "test": "standard",
+    "prepublishOnly": "npm test"
   },
   "repository": {
     "type": "git",
