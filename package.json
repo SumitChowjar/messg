@@ -1,7 +1,7 @@
 {
   "name": "messg",
   "version": "2.2.1",
-  "description": "Messages via CSS3 animations",
+  "description": "Toast messages via CSS3 animations",
   "main": "index.js",
   "style": "index.css",
   "types": "index.d.ts",
